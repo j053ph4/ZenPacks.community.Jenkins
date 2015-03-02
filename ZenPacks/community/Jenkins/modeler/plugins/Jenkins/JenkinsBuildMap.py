@@ -5,6 +5,12 @@ from ZenPacks.community.Jenkins.Definition import *
 import jenkinsapi
 from jenkinsapi.jenkins import Jenkins
 
+__doc__ = """JenkinsBuildMap
+
+JenkinsBuildMap detects Jenkins Builds
+
+"""
+
 class JenkinsBuildMap(PythonPlugin):
     """
     """

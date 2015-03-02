@@ -13,6 +13,7 @@ class CheckJenkinsBuild(CustomCheckCommand):
                           'ABORTED': {'val': 2, 'exit': 1 , 'msg': 'WARNING'}, 
                           'UNSTABLE': {'val': 3, 'exit': 1 , 'msg': 'WARNING'}, 
                           'NOT_BUILD': {'val': 4, 'exit': 1 , 'msg': 'WARNING'},
+                          'UNKNOWN': {'val': 1, 'exit': 1 , 'msg': 'WARNING'}, 
                           }
 
     def buildOptions(self):
@@ -45,8 +46,9 @@ class CheckJenkinsBuild(CustomCheckCommand):
         job = self.session.get_job(self.options.build)
         build = job.get_last_build()
         self.output['status'] = build.get_status()
+        if self.output['status'] is None: self.output['status'] = 'UNKONWN'
         self.output['number'] = build.get_number()
-        self.output['duration'] = build.get_duration()/1000
+        self.output['duration'] = build.get_duration().total_seconds()#/1000
 
     def evalStatus(self):
         """
@@ -59,3 +61,4 @@ class CheckJenkinsBuild(CustomCheckCommand):
 if __name__ == "__main__":
     u = CheckJenkinsBuild()
     u.run()
+

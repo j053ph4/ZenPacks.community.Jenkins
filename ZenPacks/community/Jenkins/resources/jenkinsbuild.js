@@ -9,7 +9,11 @@
             return ob;
         }
     }
-
+    
+    function pass_link(ob){ 
+        return ob; 
+    }
+    
     ZC.JenkinsBuildPanel = Ext.extend(ZC.ComponentGridPanel, {
         constructor: function(config) {
             config = Ext.applyIf(config||{}, {
@@ -65,16 +69,18 @@
                         "dataIndex": "name"
                     }, 
                     {
-                        "header": "Description", 
-                        "width": 120, 
                         "sortable": "true", 
+                        "width": 120, 
+                        "header": "Description", 
+                        "renderer": "pass_link", 
                         "id": "description", 
                         "dataIndex": "description"
                     }, 
                     {
-                        "header": "Build Status", 
-                        "width": 120, 
                         "sortable": "true", 
+                        "width": 120, 
+                        "header": "Build Status", 
+                        "renderer": "pass_link", 
                         "id": "getBuildStatus", 
                         "dataIndex": "getBuildStatus"
                     }, 

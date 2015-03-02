@@ -2,7 +2,7 @@ from ZenPacks.community.ConstructionKit.BasicDefinition import *
 from ZenPacks.community.ConstructionKit.Construct import *
 
 BASE = "Jenkins"
-VERSION = Version(1, 0, 0)
+VERSION = Version(1, 1, 0)
 ZPROPS = []
 
 def getMapValue(ob, datapoint, map):
@@ -34,6 +34,7 @@ JenkinsBuildDefinition = type('JenkinsBuildDefinition', (BasicDefinition,), {
                                         'buildid' : addProperty('Build ID'),
                                         'description' : addProperty('Description', optional=False),
                                         'getBuildStatus' : getReferredMethod('Build Status', 'getBuildStatus'),
+                                        'eventClass' : getEventClass('/App/Jenkins'),
                                         },
                           },
         
